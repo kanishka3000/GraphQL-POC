@@ -15,6 +15,7 @@ Running the composed the application
 docker-compose up --build
 ```
 This will start a mysql database and the product service.
+![classdgm](diagrams/Build.gif)
 You can access the system via. http://localhost:8080/graphiql
 
 ## Application overview 
