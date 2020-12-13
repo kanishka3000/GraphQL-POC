@@ -5,15 +5,29 @@ type Query{
 
 type Mutation{
     createProduct(data: CreateProduct!): ProductDetail!
+    createComponent(data: CreateComponent): ComponentDetail!
 }
 
 type ProductDetail{
     id: ID!
     name: String!
     description: String!
+    components: [ComponentDetail!]!
 }
 
+type ComponentDetail{
+    id: ID!
+    name: String!
+    description: String!
+    product: ProductDetail!
+}
 input CreateProduct{
     name: String!
     description: String!
+}
+
+input CreateComponent{
+    name: String!
+    description: String!
+    product: ID!
 }

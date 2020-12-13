@@ -1,21 +1,21 @@
 package GraphQLPOC.entity;
 
 import lombok.Data;
+
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Data
-@Table(name = Product.TABLE)
-@SequenceGenerator(name = "productseq", sequenceName = "productseq", initialValue = 1, allocationSize = 1)
-public class Product {
-    public static final String TABLE = "Product";
+@Table(name = Component.TABLE)
+@SequenceGenerator(name = "componentSeq", sequenceName = "componentSeq", initialValue = 1, allocationSize = 1)
+public class Component {
+    public static final String TABLE = "Component";
     public static final String FIELD_ID = "id";
     public static final String FIELD_NAME = "name";
     public static final String FIELD_DESCRIPTION = "description";
-
+    public static final String FIELD_PRODUCT = "product";
     @Id
-    @GeneratedValue(generator = "productseq")
+    @GeneratedValue(generator = "componentSeq")
     @Column(name = FIELD_ID)
     long id;
 
@@ -25,6 +25,6 @@ public class Product {
     @Column(name = FIELD_DESCRIPTION)
     String description;
 
-    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-    List<Component> components;
+    @ManyToOne(cascade = CascadeType.ALL)
+    Product product;
 }
